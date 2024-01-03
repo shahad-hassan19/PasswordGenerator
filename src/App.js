@@ -18,7 +18,7 @@ function App() {
       let char = Math.floor(Math.random() * str.length + 1);
       pass += str.charAt(char)
     }
-  
+
     setPassword(pass)
 
   },
@@ -28,66 +28,76 @@ function App() {
     passwordRef.current?.select()
     passwordRef.current?.setSelectionRange(0,24)
     window.navigator.clipboard.writeText(password)
+    window.alert("Password Copied on clipboard!")
   }, [password])
 
   useEffect(() => {
     passwordGenerator()
   },
-  [length, numAllowed, charAllowed, passwordGenerator])
+  [ passwordGenerator])
 
   return (
-    <div className="w-full max-w-md max-auto shadow-md rounded-lg px-4 mx-8 my-8 py-4 text-orange-500 bg-gray-700">
-    <h1 className='text-white text-center font-bold my-3'>Password Generator</h1>
-    <div className='flex justify-evenly shadow rounded overflow-hidden my-4'>
-    <input 
-      type='text'
-      value={password}
-      className='outline-none w-full py-1 px-3'
-      placeholder='password'
-      readOnly
-      ref={passwordRef}
-    />
-    <button onClick={copyPassword}
-    className='outline-none rounded bg-blue-700 text-white px-3 py-0.5 shrink-0'>
-    COPY
-    </button>
-
-    </div>   
-    <div className='flex justify-evenly text-sm mt-4 gap-x-2'>
-      <div className='flex items-center gap-x-1'>
-      <input
-        type='range'
-        min={6}
-        max={25}
-        value={length}
-        className='cursor-pointer'
-        onChange={(e) => {setLength(e.target.value)}}
-      />
-      <label>Length: {length}</label>
-      </div>
-      <div className='flex items-center gap-x-1'>
-      <input
-        type='checkbox'
-        defaultChecked={numAllowed}
-        id='numberInput'
-        onChange={() => {
-          setNumAllowed((prev) => !prev)
-        }}
-      />
-      <label htmlFor='numberInput'>Numbers</label>
-      </div>
-      <div className='flex items-center gap-x-1'>
-      <input
-        type='checkbox'
-        defaultChecked={charAllowed}
-        id='charInput'
-        onChange={() => {
-          setCharAllowed((prev) => !prev)
-        }}
-      />
-      <label htmlFor='charInput'>Numbers</label>
-      </div>
-    </div>  
+    <div className=" w-96 h-max fixed top-10 left-1/3 rounded-lg px-4 mx-8 my-8 py-4 text-white bg-sky-950">
+        <h1 className='text-center font-bold text-3xl my-3'>Password Generator</h1>
+        <div className='flex justify-evenly shadow rounded overflow-hidden mt-16'>
+            <input
+            type='text'
+            value={password}
+            className='outline-none w-3/4 bg-sky-900 rounded-md py-3 text-center px-3'
+            placeholder='password'
+            readOnly
+            ref={passwordRef}  />
+            <button onClick={copyPassword}
+            className='outline-none rounded bg-blue-700 text-white px-3 py-0.5 shrink-0'>
+                COPY
+            </button>
+        </div>
+        <div className='flex flex-col text-sm my-4'>
+            <div className='flex items-center justify-between w-3/4 my-4'>
+                <input
+                type='range'
+                min={6}
+                max={25}
+                value={length}
+                className='cursor-pointer'
+                onChange={(e) => {setLength(e.target.value)}}  />
+                <label className='text-lg'>Length :<span className=' text-yellow-300'> {length}</span></label>
+            </div>
+            <div className='flex justify-between w-3/4 my-4'>
+                <span className='text-lg'>Numbers</span>
+                <label htmlFor='numberInput'
+                className='bg-gray-100 cursor-pointer relative w-14 h-7 rounded-full'>
+                    <input
+                    type='checkbox'
+                    defaultChecked={numAllowed}
+                    id='numberInput'
+                    className='sr-only peer'
+                    onChange={() => {
+                    setNumAllowed((prev) => !prev)}}  />
+                    <span className='w-2/5 h-4/6 bg-rose-300 absolute rounded-full left-1 top-1 peer-checked:bg-rose-600 peer-checked:left-7 transition-all duration-500'></span>
+                </label>
+            </div>
+            <div className='flex items-center justify-between w-3/4 my-4'>
+                <span className='text-lg'>Special Characters</span>
+                <label htmlFor='charInput'
+                className='bg-gray-100 cursor-pointer relative w-14 h-7 rounded-full'>
+                    <input
+                    type='checkbox'
+                    role='switch'
+                    defaultChecked={charAllowed}
+                    id='charInput'
+                    className='sr-only peer'
+                    onChange={() => {
+                    setCharAllowed((prev) => !prev)}}  />
+                    <span className='w-2/5 h-4/6 bg-rose-300 absolute rounded-full left-1 top-1 peer-checked:bg-rose-600 peer-checked:left-7 transition-all duration-500'></span>
+                </label>
+            </div>
+            <button
+            className='w-3/4 bg-sky-900 self-center font-semibold rounded-md py-3 text-center px-3 text-xl my-6 transition-all duration-500 hover:bg-orange-600 hover:text-black '
+            onClick={passwordGenerator} >
+              Generate Password
+            </button>
+        </div>
     </div>
   );
 }
