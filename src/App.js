@@ -37,7 +37,8 @@ function App() {
   [ passwordGenerator])
 
   return (
-    <div className=" w-96 h-max fixed top-10 left-1/3 rounded-lg px-4 mx-8 my-8 py-4 text-white bg-sky-950">
+    <div className='flex justify-center align-items-center '>
+    <div className=" sm:w-full sm:h-full md:w-96 md:h-max self-center rounded-lg px-4 mx-8 my-8 py-4 text-white bg-sky-950">
         <h1 className='text-center font-bold text-3xl my-3'>Password Generator</h1>
         <div className='flex justify-evenly shadow rounded overflow-hidden mt-16'>
             <input
@@ -98,6 +99,7 @@ function App() {
               Generate Password
             </button>
         </div>
+    </div>
     </div>
   );
 }
