@@ -38,9 +38,9 @@ function App() {
 
   return (
     <div className='flex justify-center align-items-center '>
-    <div className=" sm:w-full sm:h-full md:w-96 md:h-max self-center rounded-lg px-4 mx-8 my-8 py-4 text-white bg-sky-950">
+    <div className=" sm:h-full w-96 md:h-max self-center rounded-lg px-4 mx-8 my-8 py-4 text-white bg-sky-950">
         <h1 className='text-center font-bold text-3xl my-3'>Password Generator</h1>
-        <h5 className='text-orange-600'>React Password Generator: Securely Create Customized Passwords</h5>
+        <h5 className='text-orange-600 text-center'>React Password Generator: Securely Create Customized Passwords</h5>
         <div className='flex justify-evenly shadow rounded overflow-hidden mt-16'>
             <input
             type='text'
