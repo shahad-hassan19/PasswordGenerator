@@ -40,6 +40,7 @@ function App() {
     <div className='flex justify-center align-items-center '>
     <div className=" sm:w-full sm:h-full md:w-96 md:h-max self-center rounded-lg px-4 mx-8 my-8 py-4 text-white bg-sky-950">
         <h1 className='text-center font-bold text-3xl my-3'>Password Generator</h1>
+        <h5 className='text-orange-600'>React Password Generator: Securely Create Customized Passwords</h5>
         <div className='flex justify-evenly shadow rounded overflow-hidden mt-16'>
             <input
             type='text'
@@ -54,7 +55,7 @@ function App() {
             </button>
         </div>
         <div className='flex flex-col text-sm my-4'>
-            <div className='flex items-center justify-between w-3/4 my-4'>
+            <div className='flex items-center justify-between sm:w-full md:w-3/4 my-4'>
                 <input
                 type='range'
                 min={6}
@@ -64,7 +65,7 @@ function App() {
                 onChange={(e) => {setLength(e.target.value)}}  />
                 <label className='text-lg'>Length :<span className=' text-yellow-300'> {length}</span></label>
             </div>
-            <div className='flex justify-between w-3/4 my-4'>
+            <div className='flex justify-between sm:w-full md:w-3/4 my-4'>
                 <span className='text-lg'>Numbers</span>
                 <label htmlFor='numberInput'
                 className='bg-gray-100 cursor-pointer relative w-14 h-7 rounded-full'>
@@ -78,7 +79,7 @@ function App() {
                     <span className='w-2/5 h-4/6 bg-rose-300 absolute rounded-full left-1 top-1 peer-checked:bg-rose-600 peer-checked:left-7 transition-all duration-500'></span>
                 </label>
             </div>
-            <div className='flex items-center justify-between w-3/4 my-4'>
+            <div className='flex items-center justify-between sm:w-full md:w-3/4 my-4'>
                 <span className='text-lg'>Special Characters</span>
                 <label htmlFor='charInput'
                 className='bg-gray-100 cursor-pointer relative w-14 h-7 rounded-full'>
