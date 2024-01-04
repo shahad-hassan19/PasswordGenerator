@@ -5,7 +5,8 @@ function App() {
   const [length, setLength] = useState('10');
   const [numAllowed, setNumAllowed] = useState(true);
   const [charAllowed, setCharAllowed] = useState(true);
-  const [password, setPassword] = useState()
+  const [password, setPassword] = useState();
+  const [copy, setCopy] = useState('Copy');
 
   const passwordRef = useRef(null)
   const passwordGenerator = useCallback(() => {
@@ -19,20 +20,22 @@ function App() {
       pass += str.charAt(char)
     }
 
-    setPassword(pass)
+    setPassword(pass);
+    setCopy('Copy');
 
   },
   [length, numAllowed, charAllowed, setPassword]);
 
   const copyPassword = useCallback(() => {
-    passwordRef.current?.select()
-    passwordRef.current?.setSelectionRange(0,24)
     window.navigator.clipboard.writeText(password)
-    window.alert("Password Copied on clipboard!")
+    if(password !== ''){
+      setCopy('Copied!');
+    }
   }, [password])
 
   useEffect(() => {
     setPassword('')
+    setCopy('Copy');
   }, [length, numAllowed, charAllowed])
 
   return (
@@ -50,7 +53,7 @@ function App() {
             ref={passwordRef}  />
             <button onClick={copyPassword}
             className='outline-none rounded bg-blue-700 text-white px-3 py-0.5 shrink-0'>
-                COPY
+                {copy}
             </button>
         </div>
         <div className='flex flex-col text-sm my-4'>
