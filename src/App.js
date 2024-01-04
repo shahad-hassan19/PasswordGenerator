@@ -2,9 +2,9 @@ import {useState, useCallback, useEffect, useRef} from 'react';
 
 function App() {
 
-  const [length, setLength] = useState('8');
-  const [numAllowed, setNumAllowed] = useState(false);
-  const [charAllowed, setCharAllowed] = useState(false);
+  const [length, setLength] = useState('10');
+  const [numAllowed, setNumAllowed] = useState(true);
+  const [charAllowed, setCharAllowed] = useState(true);
   const [password, setPassword] = useState()
 
   const passwordRef = useRef(null)
@@ -32,9 +32,8 @@ function App() {
   }, [password])
 
   useEffect(() => {
-    passwordGenerator()
-  },
-  [ passwordGenerator])
+    setPassword('')
+  }, [length, numAllowed, charAllowed])
 
   return (
     <div className='flex justify-center align-items-center '>
